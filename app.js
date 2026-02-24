@@ -1,4 +1,4 @@
-const apiKey = "3319223d2c5642c6a6f84044262402";
+const apiKey = "YOUR_API_KEY";
 const city = "London";
 
 const apiURL = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
