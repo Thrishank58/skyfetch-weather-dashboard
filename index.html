@@ -7,15 +7,31 @@
 </head>
 <body>
 
-    <div class="weather-container">
-        <h1 id="city">Loading...</h1>
-        <img id="weather-icon" />
-        <h2 id="temperature"></h2>
-        <p id="description"></p>
+    <div class="app-container">
+
+        <h1>SkyFetch 🌦️</h1>
+
+        <div class="search-container">
+            <input type="text" id="cityInput" placeholder="Enter city name">
+            <button id="searchBtn">Search</button>
+        </div>
+
+        <div id="loading">Loading weather...</div>
+        <div id="errorMsg"></div>
+
+        <!-- Current Weather -->
+        <div class="weather-container">
+            <h2 id="city">Search for a city</h2>
+            <img id="weather-icon" alt="Weather Icon">
+            <p id="temperature"></p>
+            <p id="description"></p>
+        </div>
+
+        <!-- 5 Day Forecast -->
+        <div id="forecast-container" class="forecast-container"></div>
+
     </div>
 
-    <!-- Axios CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
