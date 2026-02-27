@@ -1,3 +1,12 @@
+ part-4-storage-deployment
+# skyfetch-weather-dashboard
+Waether forcast webpage
+## Part 2 – User Interaction Implemented
+## Part 3 – OOP Forecast Implementation
+- Refactored using WeatherApp constructor
+- Added 5-day forecast
+- Used Promise.all
+
 # 🌦️ SkyFetch Weather Dashboard
 
 SkyFetch is a fully interactive weather dashboard built using JavaScript.  
@@ -172,3 +181,4 @@ Aspiring AI & Full-Stack Developer 🚀
 git add README.md
 git commit -m "Updated README with full project documentation"
 git push origin part-4-storage-deployment
+ main
