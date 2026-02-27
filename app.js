@@ -149,5 +149,8 @@ WeatherApp.prototype.resetUI = function() {
     this.iconEl.style.display = "none";
 };
 
+ part-4-storage-deployment
 // ⚠️ Replace with placeholder before pushing
 new WeatherApp("bff26fa81a5e4b58b3091024262602");
+new WeatherApp("YOUR_REAL_API_KEY_HERE");
+main
