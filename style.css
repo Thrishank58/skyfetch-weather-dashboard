@@ -148,3 +148,20 @@ body {
 .forecast-card img {
     width: 55px;
 }
+.recent-container {
+    margin-top: 25px;
+}
+
+#recent-list button {
+    margin: 5px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: none;
+    background: #6a11cb;
+    color: white;
+    cursor: pointer;
+}
+
+#recent-list button:hover {
+    background: #2575fc;
+}

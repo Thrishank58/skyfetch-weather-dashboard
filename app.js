@@ -13,7 +13,12 @@ function WeatherApp(apiKey) {
     this.errorMsg = document.getElementById("errorMsg");
     this.forecastContainer = document.getElementById("forecast-container");
 
+    // ✅ NEW (Part 4)
+    this.recentList = document.getElementById("recent-list");
+
     this.init();
+    this.loadRecentSearches();
+    this.loadLastCity();
 }
 
 WeatherApp.prototype.init = function() {
@@ -58,6 +63,9 @@ WeatherApp.prototype.fetchWeather = function(city) {
         this.renderCurrent(currentData);
         this.renderForecast(forecastData);
 
+        // ✅ NEW (Save to localStorage)
+        this.saveCity(city);
+
     })
     .catch(err => {
         this.errorMsg.textContent = err.message;
@@ -98,10 +106,51 @@ WeatherApp.prototype.renderForecast = function(data) {
     });
 };
 
+// ✅ NEW — Save City
+WeatherApp.prototype.saveCity = function(city) {
+    let searches = JSON.parse(localStorage.getItem("recentCities")) || [];
+
+    if (!searches.includes(city)) {
+        searches.unshift(city);
+    }
+
+    searches = searches.slice(0, 5); // keep max 5
+
+    localStorage.setItem("recentCities", JSON.stringify(searches));
+    localStorage.setItem("lastCity", city);
+
+    this.loadRecentSearches();
+};
+
+// ✅ NEW — Load Recent Buttons
+WeatherApp.prototype.loadRecentSearches = function() {
+    const searches = JSON.parse(localStorage.getItem("recentCities")) || [];
+    this.recentList.innerHTML = "";
+
+    searches.forEach(city => {
+        const btn = document.createElement("button");
+        btn.textContent = city;
+        btn.onclick = () => this.fetchWeather(city);
+        this.recentList.appendChild(btn);
+    });
+};
+
+// ✅ NEW — Auto Load Last City
+WeatherApp.prototype.loadLastCity = function() {
+    const lastCity = localStorage.getItem("lastCity");
+    if (lastCity) {
+        this.fetchWeather(lastCity);
+    }
+};
+
 WeatherApp.prototype.resetUI = function() {
     this.errorMsg.textContent = "";
     this.forecastContainer.innerHTML = "";
     this.iconEl.style.display = "none";
 };
 
+ part-4-storage-deployment
+// ⚠️ Replace with placeholder before pushing
+new WeatherApp("bff26fa81a5e4b58b3091024262602");
 new WeatherApp("YOUR_REAL_API_KEY_HERE");
+main
