@@ -5,3 +5,4 @@ Waether forcast webpage
 - Refactored using WeatherApp constructor
 - Added 5-day forecast
 - Used Promise.all
+bff26fa81a5e4b58b3091024262602

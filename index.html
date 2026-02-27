@@ -2,42 +2,63 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SkyFetch Weather Dashboard</title>
+    <meta name="theme-color" content="#8e2de2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyFetch Pro</title>
+
+    <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-    <div class="app-container">
+<div class="app-container">
 
-        <h1>SkyFetch 🌦️</h1>
-
-        <div class="search-container">
-            <input type="text" id="cityInput" placeholder="Enter city name">
-            <button id="searchBtn">Search</button>
-        </div>
-
-        <div id="loading">Loading weather...</div>
-        <div id="errorMsg"></div>
-
-        <!-- Current Weather -->
-        <div class="weather-container">
-            <h2 id="city">Search for a city</h2>
-            <img id="weather-icon" alt="Weather Icon">
-            <p id="temperature"></p>
-            <p id="description"></p>
-        </div>
-
-        <!-- 5 Day Forecast -->
-        <div id="forecast-container" class="forecast-container"></div>
-
-        <!-- ✅ NEW: Recent Searches -->
-        <div class="recent-container">
-            <h3>Recent Searches</h3>
-            <div id="recent-list"></div>
-        </div>
-
+    <div class="top-bar">
+        <h1>SkyFetch Pro 🌦️</h1>
+        <button id="themeToggle">🌙</button>
     </div>
 
-    <script src="app.js"></script>
+    <div class="search-container">
+        <input type="text" id="cityInput" placeholder="Enter city name">
+        <button id="searchBtn">Search</button>
+    </div>
+
+    <div id="loading" class="loader"></div>
+
+    <div class="weather-container">
+        <h2 id="city">Loading...</h2>
+        <img id="weather-icon">
+        <p id="temperature"></p>
+        <button id="unitToggle">Switch °F</button>
+
+        <div class="extra-details">
+            <p id="feelsLike"></p>
+            <p id="humidity"></p>
+            <p id="wind"></p>
+            <p id="uv"></p>
+        </div>
+
+        <p id="description"></p>
+    </div>
+
+    <h3>Hourly Forecast</h3>
+    <div id="hourly-container" class="hourly-container"></div>
+
+    <h3>Temperature Trend</h3>
+    <canvas id="tempChart"></canvas>
+
+    <div id="forecast-container" class="forecast-container"></div>
+
+</div>
+
+<script src="app.js"></script>
+
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js');
+}
+</script>
+
 </body>
 </html>
